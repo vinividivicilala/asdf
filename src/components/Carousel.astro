@@ -1,0 +1,61 @@
+---
+import link from '../../public/link.webp'
+import website from '../../public/Website2.webp'
+import photo2 from '../../public/PhotoLow.webp'
+import openblog22 from '../../public/openblog.webp'
+import devbird4 from '../../public/devbird4.webp'
+import jira from '../../public/JiraLow.webp'
+import prueba from '../../public/pruebaLow.webp'
+
+import { Image } from 'astro:assets'
+
+const images = [link, website, photo2, openblog22, devbird4, jira, prueba]
+---
+
+<div class='embla min-h-full min-w-full'>
+	<div class='embla__container md:h-96'>
+		{
+			images.map((image) => (
+				<div class='embla__slide'>
+					<Image
+						width={500}
+						height={500}
+						src={image}
+						loading={'eager'}
+						class='rounded-lg w-full min-h-full object-cover aspect-auto '
+						alt='Nature  #1'
+					/>
+				</div>
+			))
+		}
+	</div>
+</div>
+
+<style>
+	.embla {
+		overflow: hidden;
+	}
+	.embla__container {
+		display: flex;
+	}
+	.embla__slide {
+		flex: 0 0 100%;
+		min-width: 0;
+	}
+</style>
+
+<script>
+	import EmblaCarousel from 'embla-carousel'
+	import Autoplay from 'embla-carousel-autoplay'
+
+	document.addEventListener(
+		'astro:page-load',
+		() => {
+			const emblaNode = document.querySelector('.embla')
+			if (!emblaNode) return
+			const options = { loop: true }
+			const emblaApi = EmblaCarousel(emblaNode, options, [Autoplay()])
+		},
+		{}
+	)
+</script>

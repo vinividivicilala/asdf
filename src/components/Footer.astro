@@ -1,0 +1,22 @@
+---
+import Link from './Link.astro'
+const date = new Date()
+---
+
+<footer class='flex w-full justify-between gap-2 border-t-2 border-[#1C1C1C] py-8 mt-auto'>
+	<ul class='flex gap-4 text-sm font-semibold'>
+		<li><Link href='/'>Home</Link></li>
+		<li><Link href='/blog'>Blog</Link></li>
+		<li><Link href='/projects'>Proyectos</Link></li>
+	</ul>
+	<div class='flex items-center justify-end gap-2 text-sm text-[#BEBEBE] font-semibold'>
+		<div>© {date.getFullYear()} Daniel</div>
+		<img
+			width='16'
+			height='16'
+			class='aspect-auto rounded-full'
+			src='/flag.webp'
+			alt="Spain's flag"
+		/>
+	</div>
+</footer>
